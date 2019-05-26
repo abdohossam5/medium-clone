@@ -12,3 +12,17 @@ services:
     volumes:
       - ./backend/src:/src/backend/src
     command: npm run dev
+  client:
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+      args:
+        - NODE_ENV=dev
+    ports:
+      - "8081:3000"
+      - "5860:5860"
+    volumes:
+      - ./:/src/frontend
+    depends_on:
+      - server
+    command: npm start
