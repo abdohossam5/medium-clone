@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  server:
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+      args:
+        - NODE_ENV=dev
+    ports:
+      - "3000:3000"
+      - "5859:5859"
+    volumes:
+      - ./backend/src:/src/backend/src
+    command: npm run dev
