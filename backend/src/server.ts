@@ -1,2 +1,11 @@
-const sum = (a: number, b: number) => a + b;
-setInterval(() => console.log(sum(2, 3)), 1000);
+import http from "http";
+import express from "express";
+import CONFIG from "./config";
+
+const router = express();
+const { PORT = 3000 } = CONFIG;
+const server = http.createServer(router);
+
+server.listen(PORT, () =>
+  console.log(`Server is running http://localhost:${PORT}...`)
+);
